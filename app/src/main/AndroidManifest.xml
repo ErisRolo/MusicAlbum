@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.example.guohouxiao.musicalbum">
+
+    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!--允许程序打开网络套接字-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--允许程序设置内置sd卡的写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--允许程序获取网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--允许程序访问WiFi网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--允许程序读写手机状态和身份-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 高德地图key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="58804160b1ab4d590460df59278c0a1f"/>
+
+        <!-- 高德定位service -->
+        <service android:name="com.amap.api.location.APSService"/>
+
+        <!--闪屏页-->
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@style/NoActivityFullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!--主界面-->
+        <activity
+            android:name=".MainActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!--引导页-->
+        <activity
+            android:name=".ui.activity.GuideActivity"
+            android:theme="@style/NoActivityFullScreen"/>
+
+        <!--登录-->
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!--注册-->
+        <activity
+            android:name=".ui.activity.RegisterActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!--忘记密码-->
+        <activity
+            android:name=".ui.activity.ForgetActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!--新建相册-->
+        <activity
+            android:name=".ui.activity.AddActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!--编辑资料-->
+        <activity
+            android:name=".ui.activity.MyUserActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!--关注者列表-->
+        <activity
+            android:name=".ui.activity.FolloweeActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!--粉丝列表-->
+        <activity
+            android:name=".ui.activity.FollowerActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 其他用户的个人中心 -->
+        <activity
+            android:name=".ui.activity.OtherUserActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 播放 -->
+        <activity
+            android:name=".ui.activity.PlayActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 相册详情 -->
+        <activity
+            android:name=".ui.activity.AlbumActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 去那里 -->
+        <activity
+            android:name=".ui.activity.GoActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 喜欢的相册列表 -->
+        <activity
+            android:name=".ui.activity.LikeAlbumActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 收藏的相册列表 -->
+        <activity
+            android:name=".ui.activity.BookmarkAlbumActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 地图选择器 -->
+        <activity
+            android:name=".ui.activity.LocationActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 公开相册列表 -->
+        <activity
+            android:name=".ui.activity.PublicAlbumActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 私有相册列表 -->
+        <activity
+            android:name=".ui.activity.PrivateAlbumActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!--动态通知-->
+        <activity
+            android:name=".ui.activity.StatusAddActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 关注通知 -->
+        <activity
+            android:name=".ui.activity.StatusFollowActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 喜欢通知 -->
+        <activity
+            android:name=".ui.activity.StatusLikeActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 收藏通知 -->
+        <activity
+            android:name=".ui.activity.StatusBookmarkActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 搜索 -->
+        <activity
+            android:name=".ui.activity.SearchActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 搜索结果 -->
+        <activity
+            android:name=".ui.activity.SearchResultActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 相关用户 -->
+        <activity
+            android:name=".ui.activity.SearchUserActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+        <!-- 相关相册 -->
+        <activity
+            android:name=".ui.activity.SearchAlbumActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
+    </application>
+
+</manifest>

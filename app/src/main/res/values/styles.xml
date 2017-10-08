@@ -1,0 +1,45 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#2196f3</item>
+        <item name="colorPrimaryDark">#2196f3</item>
+        <item name="colorAccent">#2196f3</item>
+    </style>
+
+    <!-- Base activity theme. -->
+    <style name="MainAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#2196f3</item>
+        <item name="colorPrimaryDark">#2196f3</item>
+        <item name="colorAccent">#2196f3</item>
+    </style>
+
+
+    <!-- 全屏主题，闪屏和引导界面使用 -->
+    <style name="NoActivityFullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- TextInputLayout主题 -->
+    <style name="TextLabel" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorControlActivated">#2196f3</item>
+    </style>
+
+    <!--自定义Dialog动画-->
+    <style name="pop_anim_style">
+        <item name="android:windowEnterAnimation">@anim/pop_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_out</item>
+    </style>
+
+    <!--自定义Dialog主题-->
+    <style name="Theme_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>

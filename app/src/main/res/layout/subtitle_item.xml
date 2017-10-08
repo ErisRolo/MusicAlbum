@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:paddingLeft="5dp"
+              android:paddingRight="5dp">
+
+    <ImageView
+        android:id="@+id/mImageView"
+        android:layout_width="100sp"
+        android:layout_height="100sp"/>
+
+    <EditText
+        android:id="@+id/mEditText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+</LinearLayout>

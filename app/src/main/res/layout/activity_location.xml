@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/mToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="选择位置 "
+                android:textColor="@color/color_white"
+                android:textSize="20sp"/>
+
+            <ImageView
+                android:id="@+id/iv_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_finish"/>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <AutoCompleteTextView
+            android:id="@+id/keyWord"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="-10dp"
+            android:layout_marginRight="-10dp"
+            android:layout_weight="1"
+            android:background="@drawable/text_search"
+            android:completionThreshold="1"
+            android:dropDownVerticalOffset="1.0dip"
+            android:focusable="true"
+            android:hint="请输入关键字"
+            android:imeOptions="actionDone"
+            android:inputType="text|textAutoComplete"
+            android:maxLength="20"
+            android:paddingLeft="20.0dip"
+            android:paddingRight="37.0dip"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#C0C0C0"
+            android:textSize="16.0sp" />
+
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:onClick="onActionSearchByKey"
+            android:text="Search"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="220dp" />
+
+    <com.example.guohouxiao.musicalbum.widget.SegmentedGroup
+        android:id="@+id/segmented_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        segmentedgroup:sc_border_width="1dp"
+        segmentedgroup:sc_corner_radius="2dp">
+
+        <RadioButton
+            android:id="@+id/radio0"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:checked="true"
+            android:text="风景" />
+
+        <RadioButton
+            android:id="@+id/radio1"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="学校" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="楼宇" />
+
+        <RadioButton
+            android:id="@+id/radio3"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".33"
+            android:text="商场" />
+
+    </com.example.guohouxiao.musicalbum.widget.SegmentedGroup>
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/map"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1px" />
+
+</LinearLayout>
