@@ -72,6 +72,8 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener 
 
     private Toolbar mToolbar;
 
+    private ImageView iv_share;
+
     private TextView tv_album_name;
     private ImageView iv_album_cover;
     private TextView tv_album_author;
@@ -114,6 +116,8 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener 
             }
         });
 
+        iv_share = (ImageView) findViewById(R.id.iv_share);
+
         tv_album_name = (TextView) findViewById(R.id.tv_album_name);
         iv_album_cover = (ImageView) findViewById(R.id.iv_album_cover);
         tv_album_author = (TextView) findViewById(R.id.tv_album_author);
@@ -126,6 +130,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener 
         iv_like = (ImageView) findViewById(R.id.iv_like);
         mSwitch = (Switch) findViewById(R.id.mSwitch);
 
+        iv_share.setOnClickListener(this);
         tv_album_author.setOnClickListener(this);
         ll_play.setOnClickListener(this);
         ll_go.setOnClickListener(this);
@@ -230,6 +235,13 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.iv_share:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, "http://musicalbums.leanapp.cn/?albumId=" + album_id + "&modelId=0" + playmode);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(Intent.createChooser(intent, "分享"));
+                break;
             case R.id.tv_album_author:
                 Intent intent_author = new Intent(this, OtherUserActivity.class);
                 intent_author.putExtra(OTHER_USER_ID, author_id);
