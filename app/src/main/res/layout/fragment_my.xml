@@ -99,11 +99,11 @@
         android:layout_height="0.1dp"
         android:background="@android:color/darker_gray"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="50dp"
-        android:background="@android:color/darker_gray"/>
+    <!--    <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="50dp"
+            android:background="@android:color/darker_gray"/>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -202,12 +202,16 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_album"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="12"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
@@ -251,12 +255,16 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_lock"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="12"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
@@ -300,12 +308,16 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_like"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="12"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
@@ -349,12 +361,16 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_bookmark"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="12"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"

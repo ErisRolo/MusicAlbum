@@ -208,6 +208,12 @@
             android:label=""
             android:theme="@style/MainAppTheme"/>
 
+        <!-- 好友推荐 -->
+        <activity
+            android:name=".ui.activity.InterestingActivity"
+            android:label=""
+            android:theme="@style/MainAppTheme"/>
+
     </application>
 
 </manifest>

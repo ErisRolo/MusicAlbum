@@ -21,6 +21,7 @@ import com.example.guohouxiao.musicalbum.R;
 import com.example.guohouxiao.musicalbum.base.BaseFragment;
 import com.example.guohouxiao.musicalbum.bean.MusicAlbum;
 import com.example.guohouxiao.musicalbum.ui.activity.AddActivity;
+import com.example.guohouxiao.musicalbum.ui.activity.InterestingActivity;
 import com.example.guohouxiao.musicalbum.ui.activity.AlbumActivity;
 import com.example.guohouxiao.musicalbum.ui.activity.SearchActivity;
 import com.example.guohouxiao.musicalbum.utils.Config;
@@ -45,6 +46,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private static final String ALBUM_ID = "album_id";
     private String albumId;
 
+    private ImageView iv_add_follow;
     private LinearLayout ll_search;
 
     private PileLayout mPileLayout;
@@ -73,6 +75,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void findView(View view) {
+
+        iv_add_follow = (ImageView) view.findViewById(R.id.iv_add_follow);
+        iv_add_follow.setOnClickListener(this);
 
         ll_search = (LinearLayout) view.findViewById(R.id.ll_search);
         ll_search.setOnClickListener(this);
@@ -181,6 +186,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.iv_add_follow:
+                startActivity(new Intent(getActivity(),InterestingActivity.class));
+                break;
             case R.id.ll_search:
                 startActivity(new Intent(getActivity(), SearchActivity.class));
                 break;
