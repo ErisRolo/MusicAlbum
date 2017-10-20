@@ -205,7 +205,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_album"/>
+                android:src="@drawable/ic_album_blue"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -258,7 +258,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_lock"/>
+                android:src="@drawable/ic_lock_black"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -311,7 +311,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_like"/>
+                android:src="@drawable/ic_like_red"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -364,7 +364,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_bookmark"/>
+                android:src="@drawable/ic_bookmarked_blue"/>
 
             <TextView
                 android:layout_width="0dp"

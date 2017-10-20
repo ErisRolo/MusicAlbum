@@ -71,13 +71,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_status"/>
+                    android:src="@drawable/ic_status_blue"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="动态"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"/>
 
             </LinearLayout>
@@ -94,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_followee"/>
+                    android:src="@drawable/ic_followee_blue"/>
 
 
                 <TextView
@@ -102,6 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="关注"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"/>
 
 
@@ -128,13 +130,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_like"/>
+                    android:src="@drawable/ic_like_blue"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="喜欢"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"/>
 
             </LinearLayout>
@@ -151,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_bookmark"/>
+                    android:src="@drawable/ic_bookmark_blue"/>
 
 
                 <TextView
@@ -159,6 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="收藏"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"/>
 
             </LinearLayout>
@@ -204,7 +208,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_msg"/>
+                        android:src="@drawable/ic_msg_blue"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -213,6 +217,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="私信"
+                        android:textColor="@android:color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
 
