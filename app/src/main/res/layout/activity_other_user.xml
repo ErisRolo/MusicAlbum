@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_followee"/>
+                android:src="@drawable/ic_followee_blue"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,6 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="关注"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"/>
 
                 <TextView
@@ -127,7 +128,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="0"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
@@ -150,7 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_follower"/>
+                android:src="@drawable/ic_follower_blue"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -164,6 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="粉丝"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"/>
 
                 <TextView
@@ -172,7 +175,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="0"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
@@ -202,7 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_album"/>
+                android:src="@drawable/ic_album_bluer"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -216,6 +220,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="相册"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"/>
 
                 <TextView
@@ -224,7 +229,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="0"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
@@ -247,7 +253,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_like"/>
+                android:src="@drawable/ic_like_bluer"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -261,6 +267,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="喜欢"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"/>
 
                 <TextView
@@ -269,7 +276,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="0"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
