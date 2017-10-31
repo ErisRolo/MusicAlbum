@@ -1,25 +1,24 @@
 package com.example.guohouxiao.musicalbum.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
-import com.bumptech.glide.Glide;
 import com.example.guohouxiao.musicalbum.R;
+import com.example.guohouxiao.musicalbum.adapter.InterestingAdapter;
 import com.example.guohouxiao.musicalbum.base.BaseActivity;
 import com.example.guohouxiao.musicalbum.bean.User;
-import com.example.guohouxiao.musicalbum.utils.ShowToast;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -27,17 +26,22 @@ import java.util.List;
  * 可能感兴趣的人
  */
 
-public class InterestingActivity extends BaseActivity implements View.OnClickListener {
+public class InterestingActivity extends BaseActivity {
+
+    private static final String TAG = "InterestingActivity";
 
     private Toolbar mToolbar;
 
-    private ImageView iv_avatar;
-    private TextView tv_nickname;
-    private TextView tv_desc;
+    private TextView tv_no_interesting;
 
-    private LinearLayout ll_interesting;
-    private Button btn_follow;
-    private boolean isFollow = false;
+    private RecyclerView rv_interesting;
+    private LinearLayoutManager mLayoutManager;
+    private InterestingAdapter mAdapter;
+    private List<User> mList = new ArrayList<>();//推荐用户
+
+    private List<User> allList = new ArrayList<>();//全部用户
+    private List<User> alFollowList = new ArrayList<>();//已关注用户
+    private List<User> noFollowList = new ArrayList<>();//未关注用户
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +49,18 @@ public class InterestingActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_interesting);
 
         initView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshView();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        refreshView();
     }
 
     private void initView() {
@@ -59,49 +75,112 @@ public class InterestingActivity extends BaseActivity implements View.OnClickLis
             }
         });
 
-        iv_avatar = (ImageView) findViewById(R.id.iv_avatar);
-        tv_nickname = (TextView) findViewById(R.id.tv_nickname);
-        tv_desc = (TextView) findViewById(R.id.tv_desc);
+        tv_no_interesting = (TextView) findViewById(R.id.tv_no_interesting);
+        rv_interesting = (RecyclerView) findViewById(R.id.rv_interesting);
+        mLayoutManager = new LinearLayoutManager(this);
+        rv_interesting.setLayoutManager(mLayoutManager);
+        setupAdapter();
 
-        AVQuery<User> query = AVObject.getQuery(User.class);
-        query.whereEqualTo("objectId", "59a91aeea8f9d30064bbb33e");
-        query.findInBackground(new FindCallback<User>() {
+    }
+
+
+    private void refreshView() {
+        mList.clear();
+        setupAdapter();
+    }
+
+    private void setupAdapter() {
+
+        //获取全部用户列表
+        AVQuery<User> allQuery = AVObject.getQuery(User.class);
+        allQuery.findInBackground(new FindCallback<User>() {
             @Override
-            public void done(List<User> list, AVException e) {
-                String url = list.get(0).getAvatar();
-                if (url != null) {
-                    Glide.with(InterestingActivity.this).load(url).into(iv_avatar);
+            public void done(List<User> listAll, AVException e) {
+                if (listAll.size() != 0) {
+                    allList.addAll(listAll);
+                    allList.remove(mCurrentUser);
                 }
-                tv_nickname.setText(list.get(0).getNickname());
-                tv_desc.setText(list.get(0).getDesc());
             }
         });
 
-        ll_interesting = (LinearLayout) findViewById(R.id.ll_interesting);
-        btn_follow = (Button) findViewById(R.id.btn_follow);
-        ll_interesting.setOnClickListener(this);
-        btn_follow.setOnClickListener(this);
+        //获取已关注用户列表
+        try {
+            AVQuery<User> followeeQuery = mCurrentUser.followeeQuery(User.class);
+            followeeQuery.findInBackground(new FindCallback<User>() {
+                @Override
+                public void done(final List<User> listFollowee, AVException e) {
+                    if (listFollowee.size() != 0) {
+                        for (int i = 0; i < listFollowee.size(); i++) {
+                            alFollowList.add(listFollowee.get(i));
+                            try {
+                                User user = AVObject.createWithoutData(User.class, listFollowee.get(i).getObjectId());
+                                allList.remove(user);
+                                if (i == listFollowee.size() - 1) {
+                                    noFollowList.addAll(allList);
+
+                                    //比较用户的关注列表
+                                    if (noFollowList.size() != 0) {
+                                        for (i = 0; i < noFollowList.size(); i++) {
+                                            AVQuery<User> followeeQuery = User.followeeQuery(noFollowList.get(i).getObjectId(), User.class);
+                                            final int finalI1 = i;
+                                            followeeQuery.findInBackground(new FindCallback<User>() {
+                                                @Override
+                                                public void done(List<User> list, AVException e) {
+                                                    if (list != null) {
+                                                        if (list.size() != 0) {
+                                                            //判断是否有相同关注
+                                                            if (existSameFollow(alFollowList, list)) {
+                                                                mList.add(noFollowList.get(finalI1));
+                                                                mList = new ArrayList<>(new HashSet<User>(mList));//去重
+                                                                if (mList != null) {
+                                                                    if (mList.size() != 0) {
+                                                                        mAdapter = new InterestingAdapter(InterestingActivity.this, mList);
+                                                                        rv_interesting.setAdapter(mAdapter);
+                                                                    } else {
+                                                                        tv_no_interesting.setVisibility(View.VISIBLE);
+                                                                    }
+                                                                } else {
+                                                                    tv_no_interesting.setVisibility(View.VISIBLE);
+                                                                }
+                                                            } else {
+                                                                tv_no_interesting.setVisibility(View.VISIBLE);
+                                                            }
+                                                        } else {
+                                                            tv_no_interesting.setVisibility(View.VISIBLE);
+                                                        }
+                                                    } else {
+                                                        tv_no_interesting.setVisibility(View.VISIBLE);
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    } else {
+                                        tv_no_interesting.setVisibility(View.VISIBLE);
+                                    }
+                                }
+                            } catch (AVException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            });
+        } catch (AVException e1) {
+            e1.printStackTrace();
+        }
+
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.ll_interesting:
-                Intent intent = new Intent(this, OtherUserActivity.class);
-                intent.putExtra("other_user_id", "59a91aeea8f9d30064bbb33e");
-                startActivity(intent);
-                break;
-            case R.id.btn_follow:
-                if (isFollow) {
-                    btn_follow.setText("关注");
-                    ShowToast.showShortToast(this, "你已取消关注该用户。");
-                    isFollow = false;
-                } else {
-                    btn_follow.setText("已关注");
-                    ShowToast.showShortToast(this, "你已关注该用户。");
-                    isFollow = true;
-                }
-                break;
+    private boolean existSameFollow(List<User> currentList, List<User> otherList) {
+        boolean isExist = false;
+        for (int i = 0; i < otherList.size(); i++) {
+            if (currentList.contains(otherList.get(i))) {
+                isExist = true;
+            } else {
+                isExist = false;
+            }
         }
+        return isExist;
     }
+
 }
