@@ -38,11 +38,9 @@ public class FindFragment extends BaseFragment {
         fm = getChildFragmentManager();
 
         if (savedInstanceState == null) {
-            //mMymapFragment = new MymapFragment();
-            mSearchFragment = new SearchFragment();
+            mMymapFragment = new MymapFragment();
             ft = fm.beginTransaction();
-            //ft.add(R.id.fragment_container, mMymapFragment);
-            ft.add(R.id.fragment_container, mSearchFragment);
+            ft.add(R.id.fragment_container, mMymapFragment);
             ft.commit();
             findView(view);
         } else {
@@ -62,16 +60,14 @@ public class FindFragment extends BaseFragment {
                 if (fragment_type.equals("com.example.guohouxiao.musicalbum.ui.fragment.MymapFragment")) {
                     mSearchFragment = new SearchFragment();
                     ft = fm.beginTransaction();
-                    //ft.setCustomAnimations(R.anim.push_left_in, R.anim.push_left_out);
-                    ft.setCustomAnimations(R.anim.push_right_in, R.anim.push_right_out);
+                    ft.setCustomAnimations(R.anim.push_left_in, R.anim.push_left_out);
                     ft.replace(R.id.fragment_container, mSearchFragment);
                     ft.commit();
                 }
                 if (fragment_type.equals("com.example.guohouxiao.musicalbum.ui.fragment.SearchFragment")) {
                     mMymapFragment = new MymapFragment();
                     ft = fm.beginTransaction();
-                    //ft.setCustomAnimations(R.anim.push_right_in, R.anim.push_right_out);
-                    ft.setCustomAnimations(R.anim.push_left_in, R.anim.push_left_out);
+                    ft.setCustomAnimations(R.anim.push_right_in, R.anim.push_right_out);
                     ft.replace(R.id.fragment_container, mMymapFragment);
                     ft.commit();
                 }
